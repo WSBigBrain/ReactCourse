@@ -5,7 +5,8 @@ import {
   LoginOutlined,
   CodeOutlined,
   UserAddOutlined ,
-  CloudOutlined
+  CloudOutlined,
+  StarOutlined
 } from '@ant-design/icons';
 import './App.css';
 import { useState} from "react";
@@ -61,7 +62,7 @@ function App() {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} ><h2>LE COSMOS</h2></Header>
+          <Header className="site-layout-background" style={{ padding: 0, display:"flex" }} ><StarOutlined/><h2>   LE COSMOS   </h2><StarOutlined/></Header>
           <Content style={{ margin: '0 16px' }}>
             
           </Content>
