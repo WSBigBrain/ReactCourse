@@ -10,6 +10,8 @@ import {
 } from '@ant-design/icons';
 import './App.css';
 import { useState} from "react";
+import Profile from './components/Profile';
+import Login from './components/Login';
 
 function App() {
   const [ activeComponent,setActiveComponent]= useState();
@@ -19,13 +21,13 @@ function App() {
   const menus = [
     {
       key:"signup",
-      action : ()=> setActiveComponent(),
+      action : ()=> setActiveComponent(<Profile setActiveComponent={setActiveComponent}/>),
       title :"Signup",
       icon : <UserAddOutlined />
     },
     {
       key:"login",
-      action : ()=> setActiveComponent(),
+      action : ()=> setActiveComponent(<Login setActiveComponent={setActiveComponent}/>),
       title :"Login",
       icon : <LoginOutlined />
     },
@@ -64,7 +66,7 @@ function App() {
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, display:"flex" }} ><StarOutlined/><h2>   LE COSMOS   </h2><StarOutlined/></Header>
           <Content style={{ margin: '0 16px' }}>
-            
+            {activeComponent}
           </Content>
           <Footer style={{ textAlign: 'center' }}>Le Cosmos @2021 - ESEO - GIRARD x FABER</Footer>
         </Layout>
