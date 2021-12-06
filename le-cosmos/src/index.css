@@ -20,4 +20,16 @@ code {
 
 .site-layout .site-layout-background {
   background: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #D4F1F4;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 26px;
+}
+
+.site-layout .site-layout-background h2 {
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-bottom: 0px;
 }
