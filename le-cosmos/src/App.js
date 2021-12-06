@@ -1,5 +1,5 @@
 
-import { Layout, Menu  } from 'antd';
+import { Layout, Menu, Col, Row } from 'antd';
 import 'antd/dist/antd.css';
 import {
   LoginOutlined,
@@ -66,7 +66,9 @@ function App() {
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0, display:"flex" }} ><StarOutlined/><h2>   LE COSMOS   </h2><StarOutlined/></Header>
           <Content style={{ margin: '0 16px' }}>
-            {activeComponent}
+            <Col offset={2} span={20} style={{marginTop:40}}>
+              <Row justify="center">{activeComponent}</Row>
+            </Col>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Le Cosmos @2021 - ESEO - GIRARD x FABER</Footer>
         </Layout>
