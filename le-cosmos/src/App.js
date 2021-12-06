@@ -2,50 +2,70 @@
 import { Layout, Menu  } from 'antd';
 import 'antd/dist/antd.css';
 import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
+  LoginOutlined,
+  CodeOutlined,
+  UserAddOutlined ,
+  CloudOutlined
 } from '@ant-design/icons';
 import './App.css';
+import { useState} from "react";
 
 function App() {
+  const [ activeComponent,setActiveComponent]= useState();
 
   const { Header , Content , Footer, Sider} = Layout;
-  const {SubMenu} = Menu;
   
+  const menus = [
+    {
+      key:"signup",
+      action : ()=> setActiveComponent(),
+      title :"Signup",
+      icon : <UserAddOutlined />
+    },
+    {
+      key:"login",
+      action : ()=> setActiveComponent(),
+      title :"Login",
+      icon : <LoginOutlined />
+    },
+    {
+      key:"authors",
+      action : ()=> setActiveComponent(),
+      title :"Createurs",
+      icon : <CodeOutlined />
+    },
+    {
+      key : "meteo",
+      action : ()=> setActiveComponent(),
+      title: "Meteo",
+      icon : <CloudOutlined />
+    }
+  ];
+
+  function createMenuItem (l) {
+    return(
+        <Menu.Item key={l.key} onClick={l.action} icon={l.icon}>
+           {l.title}
+        </Menu.Item>
+    )
+};
+
+
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible >
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
-            </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
+            {menus.map((label)=> createMenuItem(label))}
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Header className="site-layout-background" style={{ padding: 0 }} ><h2>LE COSMOS</h2></Header>
           <Content style={{ margin: '0 16px' }}>
-            Ici le contenu
+            
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>Le Cosmos @2021 - ESEO - GIRARD x FABER</Footer>
         </Layout>
       </Layout>
   );
