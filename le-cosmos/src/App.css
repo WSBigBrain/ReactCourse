@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.ant-layout-sider-children {
+  background-color: #05445E;
+}
+
+.ant-menu.ant-menu-dark {
+  background-color: #05445E;
+}
+.ant-layout-sider-trigger{
+  background-color: #189AB4;
+}
