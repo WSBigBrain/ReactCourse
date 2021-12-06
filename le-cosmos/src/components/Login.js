@@ -4,10 +4,10 @@ import {
     signInWithEmailAndPassword
 } from "firebase/auth"
 import { initializeApp } from "firebase/app"
-import { firebaseConfig } from "../base";
-import Dashboard from './Dashboard';
+import { firebaseConfig } from "../lib/firebaseCredentials";
 import { useState } from 'react';
 import { LoadingOutlined } from '@ant-design/icons';
+import Dashboard from './Dashboard';
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
