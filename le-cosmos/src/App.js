@@ -15,6 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
+          Texte a la con
           Learn React
         </a>
       </header>
