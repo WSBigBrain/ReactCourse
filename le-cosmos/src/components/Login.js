@@ -22,6 +22,7 @@ const Login = (props) => {
     .then((credentials) => {
         console.log(credentials);
         setLoading(false);
+        localStorage.setItem("isAuth",true);
         props.setActiveComponent(<Dashboard/>);
     })
     .catch((err) => {

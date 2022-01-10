@@ -6,12 +6,20 @@ import {
   CodeOutlined,
   UserAddOutlined ,
   CloudOutlined,
-  StarOutlined
+  StarOutlined,
+  FileImageOutlined,
+  CloseOutlined,
+  HomeOutlined,
+  RiseOutlined
 } from '@ant-design/icons';
 import './App.css';
 import { useState} from "react";
 import Profile from './components/Profile';
 import Login from './components/Login';
+import Imagery from './components/Imagery';
+import Dashboard from './components/Dashboard';
+import Creators from './components/Creators';
+import Rankings from './components/Rankings';
 
 function App() {
   const [ activeComponent,setActiveComponent]= useState();
@@ -23,31 +31,67 @@ function App() {
       key:"signup",
       action : ()=> setActiveComponent(<Profile setActiveComponent={setActiveComponent}/>),
       title :"Signup",
-      icon : <UserAddOutlined />
+      icon : <UserAddOutlined />,
+      hidden : localStorage.getItem("isAuth") 
     },
     {
       key:"login",
       action : ()=> setActiveComponent(<Login setActiveComponent={setActiveComponent}/>),
       title :"Login",
-      icon : <LoginOutlined />
+      icon : <LoginOutlined />,
+      hidden : localStorage.getItem("isAuth") 
+    },
+    {
+      key:"dashboard",
+      action : ()=> setActiveComponent(<Dashboard setActiveComponent={setActiveComponent}/>),
+      title :"Tableau de Bord",
+      icon : <HomeOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
     },
     {
       key:"authors",
-      action : ()=> setActiveComponent(),
+      action : ()=> setActiveComponent(<Creators/>),
       title :"Createurs",
-      icon : <CodeOutlined />
+      icon : <CodeOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
     },
     {
       key : "meteo",
       action : ()=> setActiveComponent(),
       title: "Meteo",
-      icon : <CloudOutlined />
+      icon : <CloudOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
+    },
+    {
+      key :"image",
+      action : ()=> setActiveComponent(<Imagery/>),
+      title : "Imagerie",
+      icon : <FileImageOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
+    },
+    {
+      key :"trends",
+      action : ()=> setActiveComponent(<Rankings/>),
+      title : "Tendances",
+      icon : <RiseOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
+    },
+    {
+      key :"disconnect",
+      action : ()=> disconnect(),
+      title : "Deconnexion",
+      icon : <CloseOutlined />,
+      hidden : !localStorage.getItem("isAuth") 
     }
   ];
-
+  function disconnect () {
+    localStorage.removeItem("isAuth");
+    setActiveComponent(<Login setActiveComponent={setActiveComponent}/>);
+    console.log(localStorage.getItem("isAuth"));
+  }
   function createMenuItem (l) {
     return(
-        <Menu.Item key={l.key} onClick={l.action} icon={l.icon}>
+        <Menu.Item key={l.key} onClick={l.action} icon={l.icon} hidden={l.hidden}>
            {l.title}
         </Menu.Item>
     )
