@@ -12,6 +12,8 @@ import './App.css';
 import { useState} from "react";
 import Profile from './components/Profile';
 import Login from './components/Login';
+import MeteoCard from './components/MeteoCard';
+import Meteo from './components/Meteo';
 
 function App() {
   const [ activeComponent,setActiveComponent]= useState();
@@ -39,7 +41,7 @@ function App() {
     },
     {
       key : "meteo",
-      action : ()=> setActiveComponent(),
+      action : ()=> setActiveComponent(<Meteo setActiveComponent={setActiveComponent}/>),
       title: "Meteo",
       icon : <CloudOutlined />
     }
